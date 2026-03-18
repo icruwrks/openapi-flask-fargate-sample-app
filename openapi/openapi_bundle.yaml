@@ -17,9 +17,6 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.27
-externalDocs:
-  description: Find out more about Swagger
-  url: https://swagger.io
 servers:
   - url: https://petstore3.swagger.io/api/v3
 tags:
@@ -35,6 +32,9 @@ tags:
       url: https://swagger.io
   - name: user
     description: Operations about user
+externalDocs:
+  description: Find out more about Swagger
+  url: https://swagger.io
 paths:
   /healthcheck:
     get:
@@ -849,8 +849,8 @@ components:
         implicit:
           authorizationUrl: https://petstore3.swagger.io/oauth/authorize
           scopes:
-            "write:pets": modify pets in your account
-            "read:pets": read your pets
+            write:pets: modify pets in your account
+            read:pets: read your pets
     api_key:
       type: apiKey
       name: api_key
