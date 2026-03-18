@@ -60,3 +60,32 @@ curl --verbose 'http://127.0.0.1:4010/healthcheck'
 ```
 npx @openapitools/openapi-generator-cli generate -i openapi/openapi_bundle.yaml -g python-flask -o ./flask-app
 ```
+
+## Dockerでのビルド・起動
+
+- Dockerのインストールが必要
+- プロジェクトルートの `Dockerfile` と `wsgi.py` を使用（flask-app/は自動生成のまま）
+
+### ビルド
+
+```
+docker build -t flask-app .
+```
+
+### 起動
+
+```
+docker run -p 8080:8080 flask-app
+```
+
+### ワーカー数を指定する場合
+
+```
+docker run -p 8080:8080 -e GUNICORN_WORKERS=2 flask-app
+```
+
+### 動作確認
+
+```
+curl --verbose 'http://127.0.0.1:8080/healthcheck'
+```
