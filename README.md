@@ -7,6 +7,21 @@ openapiを使ったflaskアプリのサンプル
 - node.jsのインストールが必要（npm or npxを使える必要がある）
 - latestのオプションをつける場合はnodeの最新の安定板（LTS）をインストールしておくのが良さそう
 - https://redocly.com/docs/cli/installation
+- openapi-generatorを使う場合はJavaのインストールが必要
+
+### PowerShellでnpxが実行できない場合
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+### Javaのインストール（winget）
+
+```powershell
+winget install EclipseAdoptium.Temurin.17.JDK
+```
+
+インストール後は**新しいターミナルを開く**と `java` コマンドが使えるようになる。
 
 ## 結合（bundle）
 
@@ -38,4 +53,10 @@ npx -y @stoplight/prism-cli@latest mock openapi/openapi_bundle.yaml
 
 ```
 curl --verbose 'http://127.0.0.1:4010/healthcheck'
+```
+
+### openapi genelator
+
+```
+npx @openapitools/openapi-generator-cli generate -i openapi/openapi_bundle.yaml -g python-flask -o ./flask-app
 ```
